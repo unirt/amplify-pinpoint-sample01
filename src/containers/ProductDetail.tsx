@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Header, Grid } from 'semantic-ui-react';
+import { Analytics } from 'aws-amplify';
 import useProductDetail from '../components/hooks/FetchProductDetail';
 import Product from '../components/Product';
 import Comments from '../components/Comments';
@@ -14,6 +15,11 @@ function ProductDetail() {
 
   // 確認画面ボタンが押された時の処理
   const click = () => {
+    // TODO (3) 「確認画面 >」ボタン押下時の Event を追加
+    Analytics.record({
+      name: 'click_confirm',
+    });
+
     navigate(`/confirmation/${productDetail?.id}`);
   };
 

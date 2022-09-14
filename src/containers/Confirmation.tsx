@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Grid, Header, Button, Icon } from 'semantic-ui-react';
+import { Analytics } from 'aws-amplify';
 import ProductCard from '../components/ProductCard';
 import useProductDetail from '../components/hooks/FetchProductDetail';
 import OrderStep from '../components/OrderStep';
@@ -13,6 +14,11 @@ function ProductDetail() {
 
   // カード情報入力ボタンが押された時の処理
   const click = () => {
+    // TODO (4) 「カード情報を入力 >」ボタン押下時の Event を追加
+    Analytics.record({
+      name: 'click_billing',
+    });
+
     navigate('/billing');
   };
 

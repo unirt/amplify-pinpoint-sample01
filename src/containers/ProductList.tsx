@@ -1,6 +1,7 @@
 import React from 'react';
 import { Item } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
+import { Analytics } from 'aws-amplify';
 import Product from '../components/Product';
 import useProducts from '../components/hooks/FetchProducts';
 
@@ -13,6 +14,11 @@ function ProductList() {
       {products.map((product) => {
         // 商品詳細ボタンが押された時の処理
         const click = () => {
+          // TODO (2)「商品詳細 >」ボタン押下時の Event を追加
+          Analytics.record({
+            name: 'click_detail',
+          });
+
           navigate(`/product/${product.id}`);
         };
 

@@ -1,11 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Grid, Header, Pagination } from 'semantic-ui-react';
+import { Analytics } from 'aws-amplify';
 import ProductList from './ProductList';
 import PageHeader from '../components/PageHeader';
 
 function Home() {
-  // トップページが表示された時の処理
-  //   useEffect(() => {}, []);
+  // TODO (1) Top 画面表示時の Event を追加
+  Analytics.record({
+    name: 'show_home',
+  });
 
   return (
     <>

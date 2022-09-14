@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Header, Button, Form, Segment } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
+import { Analytics } from 'aws-amplify';
 import OrderStep from '../components/OrderStep';
 import PageHeader from '../components/PageHeader';
 
@@ -9,6 +10,11 @@ function Billing() {
 
   // 支払いボタンが押された時の処理
   const click = () => {
+    // TODO (5) 「支払い」ボタン押下時の Event を追加
+    Analytics.record({
+      name: 'click_payment',
+    });
+
     navigate('/order');
   };
 
